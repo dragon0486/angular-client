@@ -25,10 +25,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TodoForComponent } from './components/todo-for/todo-for.component';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SigninOidcComponent } from './oidc/signin-oidc/signin-oidc.component';
 import { RedirectSilentRenewComponent } from './oidc/redirect-silent-renew/redirect-silent-renew.component';
 import { AuthorizationHeaderInterceptor } from './oidc/authorization-header.interceptor';
+import { Globals } from './services/global-store';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { AuthorizationHeaderInterceptor } from './oidc/authorization-header.inte
       provide: HTTP_INTERCEPTORS,
       useClass: AuthorizationHeaderInterceptor,
       multi: true
-    }
+    },
+    Globals
   ],
   bootstrap: [AppComponent]
 })
